@@ -1,0 +1,15 @@
+D:\LibraryManager\LibraryManager.Client\bin\Debug\LibraryManager.Client.dll
+D:\LibraryManager\LibraryManager.Client\bin\Debug\LibraryManager.Client.pdb
+D:\LibraryManager\LibraryManager.Client\bin\Debug\LibraryManager.dll
+D:\LibraryManager\LibraryManager.Client\bin\Debug\Newtonsoft.Json.dll
+D:\LibraryManager\LibraryManager.Client\bin\Debug\System.Net.Http.Formatting.dll
+D:\LibraryManager\LibraryManager.Client\bin\Debug\Utilities.dll
+D:\LibraryManager\LibraryManager.Client\bin\Debug\LibraryManager.pdb
+D:\LibraryManager\LibraryManager.Client\bin\Debug\Utilities.pdb
+D:\LibraryManager\LibraryManager.Client\bin\Debug\Newtonsoft.Json.xml
+D:\LibraryManager\LibraryManager.Client\bin\Debug\System.Net.Http.Formatting.xml
+D:\LibraryManager\LibraryManager.Client\obj\Debug\LibraryManager.Client.csprojAssemblyReference.cache
+D:\LibraryManager\LibraryManager.Client\obj\Debug\LibraryManager.Client.csproj.CoreCompileInputs.cache
+D:\LibraryManager\LibraryManager.Client\obj\Debug\LibraryManager.Client.csproj.CopyComplete
+D:\LibraryManager\LibraryManager.Client\obj\Debug\LibraryManager.Client.dll
+D:\LibraryManager\LibraryManager.Client\obj\Debug\LibraryManager.Client.pdb

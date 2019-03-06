@@ -1,0 +1,11 @@
+D:\LibraryManager\Utilities\bin\Debug\Utilities.dll
+D:\LibraryManager\Utilities\bin\Debug\Utilities.pdb
+D:\LibraryManager\Utilities\bin\Debug\Newtonsoft.Json.dll
+D:\LibraryManager\Utilities\bin\Debug\System.Net.Http.Formatting.dll
+D:\LibraryManager\Utilities\bin\Debug\Newtonsoft.Json.xml
+D:\LibraryManager\Utilities\bin\Debug\System.Net.Http.Formatting.xml
+D:\LibraryManager\Utilities\obj\Debug\Utilities.csprojAssemblyReference.cache
+D:\LibraryManager\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache
+D:\LibraryManager\Utilities\obj\Debug\Utilities.csproj.CopyComplete
+D:\LibraryManager\Utilities\obj\Debug\Utilities.dll
+D:\LibraryManager\Utilities\obj\Debug\Utilities.pdb
