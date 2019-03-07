@@ -1,58 +1,40 @@
 ﻿using System;
+using LibraryManager.Client;
 using TechTalk.SpecFlow;
+using Utilities;
 
 namespace LibraryManager.Test.Hooks
 {
+    [Binding]
     public class BaseHook
     {
-        [Binding]
-            public class BaseHook
-            {
-                public static HttpRequestHandler httpRequestHandler;
-                public static BlockexWebApiSettings blockexWebApiSettings;
-                public static AuthService auth;
+        public static HttpRequestHandler httpRequestHandler;
+        public static LibraryManagerSettings libraryManagerSettings;
+        public static BookClient bookClient;
 
-                public static AuthenticationClient authenticationClient;
-                public static TraderClient traderClient;
-                public static KycClient kycClient;
-                public static CaseAllocatorClient caseAllocatorClient;
-                public static BoTraderClient boTraderClient;
-                public static CryptoCurrencyWalletClient cryptoCurrencyWalletClient;
-                public static DepositsClient depositsClient;
+        [BeforeTestRun]
+        public static void BeforeTestRun()
+        {
+            httpRequestHandler = new HttpRequestHandler();
+            libraryManagerSettings = new LibraryManagerSettings();
+        }
 
-                [BeforeTestRun]
-                public static void BeforeTestRun()
-                {
-                    httpRequestHandler = new HttpRequestHandler();
-                    blockexWebApiSettings = new BlockexWebApiSettings();
-                    auth = new AuthService();
+        [BeforeScenario]
+        public static void BeforeScenario()
+        {
+                    
+        }
 
-                    authenticationClient = new AuthenticationClient();
-                    kycClient = new KycClient();
-                    caseAllocatorClient = new CaseAllocatorClient();
-                    traderClient = new TraderClient();
-                    boTraderClient = new BoTraderClient();
-                    cryptoCurrencyWalletClient = new CryptoCurrencyWalletClient();
-                    depositsClient = new DepositsClient();
-                }
+        [AfterScenario]
+        public static void AfterScenario()
+        {
+         
+        }
 
-                [BeforeScenario]
-                public static void BeforeScenario()
-                {
-                    //TODO: Implement logic that has to run before executing each scenario
-                }
+        [AfterTestRun]
+        public static void AfterTestRun()
+        {
 
-                [AfterScenario]
-                public static void AfterScenario()
-                {
-                    //TODO: Implement logic that has to run after executing each scenario
-                }
-
-                [AfterTestRun]
-                public static void AfterTestRun()
-                {
-                    //TODO: Implement logic that has to run after test run
-                }
-            }
+        }
     }
 }

@@ -1,11 +1,8 @@
-﻿using LibraryManager.Client;
+﻿using System.Net;
 using LibraryManager.Model;
+using LibraryManager.Test.Hooks;
 using NUnit.Framework;
-using System;
-using System.Net;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
-using Utilities;
 
 namespace LibraryManager.Test.Definitions
 {
@@ -13,19 +10,28 @@ namespace LibraryManager.Test.Definitions
     public class AddBookSteps
     {
         private BookModel _book;
-        private BookClient _bookClient;
-        private HttpRequestHandler _httpRequestHandler;
         private BookModel _responseModel;
+        private ResponseErrorModel _responseErrorModel;
         private HttpStatusCode _statusCode;
 
-        public AddBookSteps()
+        [Given(@"I create a new valid book \((.*), (.*), (.*), (.*)\)")]
+        public void GivenICreateANewValidBook(int Id, string Title, string Author, string Description)
         {
-            _bookClient = new BookClient();
-            _httpRequestHandler = new HttpRequestHandler();
+            BookModel book = new BookModel()
+            {
+                Id = Id,
+                Author = Author,
+                Title = Title,
+                Description = Description
+            };
+
+            var result = BaseHook.bookClient.AddBook(_book);
+            _statusCode = result.Result.StatusCode;
+            _responseModel = BaseHook.httpRequestHandler.HandleHttpRequest<BookModel>(result);
         }
 
-        [Given(@"I create a new book \((.*), (.*), (.*), (.*)\)")]
-        public void GivenICreateANewBook(int Id, string Title, string Author, string Description)
+        [Given(@"I create a new invalid book \((.*), (.*), (.*), (.*)\)")]
+        public void GivenICreateANewInvalidBook(int Id, string Title, string Author, string Description)
         {
             _book = new BookModel()
             {
@@ -35,8 +41,9 @@ namespace LibraryManager.Test.Definitions
                 Description = Description
             };
 
-            var result = _bookClient.AddBook(_book);
-            _responseModel = _httpRequestHandler.HandleHttpRequest<BookModel>(result);
+            var result = BaseHook.bookClient.AddBook(_book);
+            _statusCode = result.Result.StatusCode;
+            _responseErrorModel = BaseHook.httpRequestHandler.HandleHttpRequest<ResponseErrorModel>(result);
         }
 
         [Given(@"ModelState is correct")]
@@ -50,11 +57,23 @@ namespace LibraryManager.Test.Definitions
                 Assert.That(_responseModel.Description, Is.EqualTo(_book.Description), "'Description' is missing or is not equal to");
             });
         }
-        
-        [Then(@"the system should return (.*)")]
-        public void ThenTheSystemShouldReturn(string p0)
+
+        [Then(@"the system should return positive (.*)")]
+        public void ThenTheSystemShouldReturnPositive(string p0)
         {
-            Assert.AreEqual(_statusCode, HttpStatusCode.OK);
+            Assert.AreEqual(HttpStatusCode.OK, _statusCode);
+        }
+
+        [Then(@"the system should return negative (.*)")]
+        public void ThenTheSystemShouldReturnNegative(string p0)
+        {
+            Assert.AreEqual(HttpStatusCode.BadRequest, _statusCode);
+        }
+
+        [Then(@"error message should be returned as well")]
+        public void ThenErrorMessageMustBeReturnedAsWell()
+        {
+            Assert.That(_responseErrorModel.ErrorMessage, Is.Not.Null);
         }
     }
 }
