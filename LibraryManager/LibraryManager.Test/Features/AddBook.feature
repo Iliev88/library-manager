@@ -1,29 +1,27 @@
 ﻿Feature: AddBook
-	In order to add a new book
-	As a user
-	I want to be able to add it correctly
+	In order to avoid silly mistakes
+	As a math idiot
+	I want to be told the sum of two numbers
 
-Scenario Outline: Add a valid book
-	Given I create a new  valid book (<Id>, <Title>, <Author>, <Description>)
-	And ModelState is correct
-	Then the system should return positive <StatusCode>
-
+Scenario Outline: Add a book
+	Given book model is created <Id>, <Author>, <Title> and <Description>
+	When the model is sent to the server
+	Then successful status code should be returned
+	And the book should be added
 Examples:
-	| Id | Title       | Author              | Description                                    | StatusCode |
-	| 1  | Don Quixote | Miguel de Cervantes | Alonso Quixano, a retired country gentleman... | 200        |
-	| 2  | Moby Dick   | Herman Melvill      | First published in 1851, Melville's...         | 200        |
-    | 3  | The Odyssey | Homer               |                                                | 200        |
-    
-Scenario Outline: Add an invalid book
-    Given I create a new invalid book (<Id>, <Title>, <Author>, <Description>)
-    And ModelState is correct
-    Then the system should return negative <StatusCode>
-    And error message should be returned as well
+	| Id | Author              | Title       | Description                          |
+	| 1  | Miguel de Cervantes | Don Quixote | Alonso Quixano, a retired country... |
+	| 2  | James Joyce         | Ulysses     | Ulysses chronicles the passage...    |
+	| 3  | Krisko              | The Road    |                                      |
 
+Scenario Outline: Fail to add a book
+   Given book model is created <Id>, <Author>, <Title> and <Description>
+   When the model is sent to the server
+   Then the book should not be added <Error>
+   And unsuccessful status code should be returned
 Examples:
-    | Id | Title        | Author                         | Description                                    | StatusCode |
-    | 4  | Don Quixote  |                                | Alonso Quixano, a retired country gentleman... | 400        |
-    | 5  |              | Herman Melvill                 | First published in 1851, Melville's...         | 400        |
-    | 6  | The Odyssey  | Homer                          |                                                | 400        |
-    | 1  | New Book     | New Author                     |                                                | 400        |
-    | 7  | TitleLong    | AuthorLongerThan30CharactersIn |                                                | 400        |
+	| Id | Author          | Title          | Description          | Error                           |
+	| 1  | Random Author   | Random Title   | Random Description   | already exists!                 |
+	| 4  |                 | Random Title 4 | Random Description 4 | Book.Author is a required field |
+	| 5  | Random Author 5 |                | Random Description 5 | Book.Title is a required field  |
+
