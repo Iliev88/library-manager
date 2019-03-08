@@ -44,7 +44,6 @@
     <Compile Include="Factory\BookObjectFactory.cs" />
     <Compile Include="Model\BookModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\ResponseErrorModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

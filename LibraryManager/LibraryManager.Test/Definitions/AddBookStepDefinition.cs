@@ -1,17 +1,13 @@
-﻿using LibraryManager.Factory;
-using LibraryManager.Model;
-using LibraryManager.Test.Hooks;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
-
-namespace LibraryManager.Test.Definitions
+﻿namespace LibraryManager.Test.Definitions
 {
+    using System;
+    using System.Net;
+    using LibraryManager.Factory;
+    using LibraryManager.Model;
+    using LibraryManager.Test.Hooks;
+    using NUnit.Framework;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public sealed class AddBookStepDefinition
     {
@@ -20,20 +16,6 @@ namespace LibraryManager.Test.Definitions
         public AddBookStepDefinition(BookModel book)
         {
             this.bookModel = book;
-        }
-
-        [Given(@"book model is created")]
-        public void GivenBookModelIsCreated(Table table)
-        {
-            var data = table.CreateSet<BookModel>();
-
-            foreach (var item in data)
-            {
-                bookModel.Id = item.Id;
-                bookModel.Author = item.Author;
-                bookModel.Title = item.Title;
-                bookModel.Description = item.Description;
-            }
         }
 
         [Given(@"book model is created (.*), (.*), (.*) and (.*)")]
@@ -50,12 +32,14 @@ namespace LibraryManager.Test.Definitions
         public void WhenTheModelIsSentToTheServer()
         {
             BaseHook.result = BaseHook.bookClient.AddBook(bookModel);
+            var responseModel = BaseHook.httpRequestHandler.HandleHttpRequest<BookModel>(BaseHook.result);
+            ScenarioContext.Current.Set<BookModel>(responseModel);
         }
 
         [Then(@"the book should be added")]
         public void ThenTheBookShouldBeAdded()
         {
-            var responseModel = BaseHook.httpRequestHandler.HandleHttpRequest<BookModel>(BaseHook.result);
+            var responseModel = ScenarioContext.Current.Get<BookModel>();
 
             Assert.Multiple(() =>
             {
@@ -66,19 +50,19 @@ namespace LibraryManager.Test.Definitions
             });
         }
 
+        [Then(@"the book should not be added (.*)")]
+        public void ThenTheBookShouldNotBeAdded(string error)
+        {
+            var errorMessage = BaseHook.httpRequestHandler.GetHttpRequestMsgAsString(BaseHook.result);
+
+            Assert.That(errorMessage, Does.Contain(error));
+            Console.WriteLine(errorMessage);
+        }
+
         [Then(@"successful status code should be returned")]
         public void ThenSuccessfulStatusCodeShouldBeReturned()
         {
             Assert.AreEqual(HttpStatusCode.OK, BaseHook.result.Result.StatusCode);
-        }
-
-        [Then(@"the book should not be added (.*)")]
-        public void ThenTheBookShouldNotBeAdded(string error)
-        {
-            var responseModel = BaseHook.httpRequestHandler.GetHttpRequestMsgAsString(BaseHook.result);
-
-            Assert.That(responseModel, Does.Contain(error));
-            Console.WriteLine(responseModel);
         }
 
         [Then(@"unsuccessful status code should be returned")]
