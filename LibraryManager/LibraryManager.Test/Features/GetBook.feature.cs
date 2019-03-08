@@ -18,20 +18,21 @@ namespace LibraryManager.Test.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("AddBook")]
-    public partial class AddBookFeature
+    [NUnit.Framework.DescriptionAttribute("GetBook")]
+    public partial class GetBookFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "AddBook.feature"
+#line 1 "GetBook.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "AddBook", "\tIn order to use library service\r\n\tAs a user\r\n\tI want to be able to add a book", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "GetBook", "\tIn order to use the library service\r\n\tAs a user\r\n\tI want to be able to get a boo" +
+                    "k", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -70,48 +71,45 @@ namespace LibraryManager.Test.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add a book")]
-        [NUnit.Framework.TestCaseAttribute("1", "Miguel de Cervantes", "Don Quixote", "Alonso Quixano, a retired country...", null)]
-        [NUnit.Framework.TestCaseAttribute("2", "James Joyce", "Ulysses", "Ulysses chronicles the passage...", null)]
-        [NUnit.Framework.TestCaseAttribute("3", "Krisko", "The Road", "", null)]
-        public virtual void AddABook(string id, string author, string title, string description, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Get a book")]
+        [NUnit.Framework.TestCaseAttribute("4", "Dan Brown", "Inferno", "Dante...", null)]
+        public virtual void GetABook(string id, string author, string title, string description, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add a book", null, exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get a book", null, exampleTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 7
  testRunner.Given(string.Format("book model is created {0}, {1}, {2} and {3}", id, author, title, description), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
- testRunner.When("the model is sent to the server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("the model is sent to the server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
- testRunner.Then("successful status code should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When(string.Format("book is requested {0}", id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 10
+ testRunner.Then("successful status code should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 11
  testRunner.And("the book should be added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Fail to add a book")]
-        [NUnit.Framework.TestCaseAttribute("4", "", "Random Title 4", "Random Description 4", "Book.Author is a required field", null)]
-        [NUnit.Framework.TestCaseAttribute("5", "Random Author 5", "", "Random Description 5", "Book.Title is a required field", null)]
-        [NUnit.Framework.TestCaseAttribute("-1", "Invalid Author", "Invalid Title", "Invalid Description", "Book.Id should be a positive integer!", null)]
-        [NUnit.Framework.TestCaseAttribute("0", "Invalid Author", "Invalid Title", "Invalid Description", "Book.Id should be a positive integer!", null)]
-        public virtual void FailToAddABook(string id, string author, string title, string description, string error, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Get an invalid book")]
+        [NUnit.Framework.TestCaseAttribute("999", "not found!", null)]
+        [NUnit.Framework.TestCaseAttribute("-1", "not found!", null)]
+        [NUnit.Framework.TestCaseAttribute("0", "not found!", null)]
+        public virtual void GetAnInvalidBook(string id, string error, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Fail to add a book", null, exampleTags);
-#line 17
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get an invalid book", null, exampleTags);
+#line 16
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
+#line 17
+ testRunner.Given(string.Format("book is requested {0}", id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 18
-   testRunner.Given(string.Format("book model is created {0}, {1}, {2} and {3}", id, author, title, description), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Then("not found status code should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 19
-   testRunner.When("the model is sent to the server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 20
-   testRunner.Then(string.Format("the book should not be added {0}", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 21
-   testRunner.And("unsuccessful status code should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("book should not be retrieved {0}", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

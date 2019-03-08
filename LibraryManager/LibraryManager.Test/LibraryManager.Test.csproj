@@ -63,13 +63,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseTest.cs" />
-    <Compile Include="BookTest.cs" />
     <Compile Include="Definitions\AddBookStepDefinition.cs" />
+    <Compile Include="Definitions\DeleteBookStepDefinition.cs" />
+    <Compile Include="Definitions\GetAllBooksStepDefinition.cs" />
+    <Compile Include="Definitions\GetBookStepDefinition.cs" />
+    <Compile Include="Definitions\UpdateBookStepDefinition.cs" />
     <Compile Include="Features\AddBook.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AddBook.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\DeleteBook.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeleteBook.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\GetAllBooks.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetAllBooks.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\GetBook.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetBook.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\UpdateBook.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpdateBook.feature</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Hooks\BaseHook.cs" />
@@ -93,6 +115,22 @@
     <None Include="Features\AddBook.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddBook.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\DeleteBook.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DeleteBook.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\GetAllBooks.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GetAllBooks.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\GetBook.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GetBook.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\UpdateBook.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UpdateBook.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

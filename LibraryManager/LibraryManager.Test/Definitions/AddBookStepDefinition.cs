@@ -29,17 +29,17 @@
         }
 
         [When(@"the model is sent to the server")]
+        [Given(@"the model is sent to the server")]
         public void WhenTheModelIsSentToTheServer()
         {
             BaseHook.result = BaseHook.bookClient.AddBook(bookModel);
-            var responseModel = BaseHook.httpRequestHandler.HandleHttpRequest<BookModel>(BaseHook.result);
-            ScenarioContext.Current.Set<BookModel>(responseModel);
         }
 
         [Then(@"the book should be added")]
+        [Given(@"the book should be added")]
         public void ThenTheBookShouldBeAdded()
         {
-            var responseModel = ScenarioContext.Current.Get<BookModel>();
+            var responseModel = BaseHook.httpRequestHandler.HandleHttpRequest<BookModel>(BaseHook.result);
 
             Assert.Multiple(() =>
             {
