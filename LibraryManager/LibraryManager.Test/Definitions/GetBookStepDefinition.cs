@@ -1,14 +1,8 @@
-﻿using LibraryManager.Test.Hooks;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using TechTalk.SpecFlow;
-
-namespace LibraryManager.Test.Definitions
+﻿namespace LibraryManager.Test.Definitions
 {
+    using LibraryManager.Test.Hooks;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public sealed class GetBookStepDefinition
     {

@@ -1,7 +1,5 @@
 ﻿namespace LibraryManager.Test.Definitions
 {
-    using System;
-    using System.Net;
     using LibraryManager.Factory;
     using LibraryManager.Model;
     using LibraryManager.Test.Hooks;

@@ -1,15 +1,11 @@
-﻿using LibraryManager.Factory;
-using LibraryManager.Model;
-using LibraryManager.Test.Hooks;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TechTalk.SpecFlow;
-
-namespace LibraryManager.Test.Definitions
+﻿namespace LibraryManager.Test.Definitions
 {
+    using LibraryManager.Factory;
+    using LibraryManager.Model;
+    using LibraryManager.Test.Hooks;
+    using NUnit.Framework;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public sealed class UpdateBookStepDefinition
     {

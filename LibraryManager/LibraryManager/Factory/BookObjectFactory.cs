@@ -1,12 +1,8 @@
-﻿using LibraryManager.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LibraryManager.Factory
+﻿namespace LibraryManager.Factory
 {
+    using LibraryManager.Model;
+    using System;
+
     public class BookObjectFactory
     {
         public static BookModel GetBook()

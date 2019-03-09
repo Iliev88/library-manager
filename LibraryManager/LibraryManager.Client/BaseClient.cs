@@ -1,7 +1,7 @@
-﻿using Utilities;
-
-namespace LibraryManager.Client
+﻿namespace LibraryManager.Client
 {
+    using Utilities;
+
     public class BaseClient
     {
         protected HttpRequestHandler httpRequestHandler;

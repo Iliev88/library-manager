@@ -1,14 +1,10 @@
-﻿using LibraryManager.Test.Hooks;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using TechTalk.SpecFlow;
-
-namespace LibraryManager.Test.Definitions.Then
+﻿namespace LibraryManager.Test.Definitions.Then
 {
+    using LibraryManager.Test.Hooks;
+    using NUnit.Framework;
+    using System.Net;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public sealed class StatusCodeStepDefinition
     {

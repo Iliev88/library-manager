@@ -1,13 +1,12 @@
-﻿using System;
-using System.Diagnostics;
-using System.Net.Http;
-using System.Threading.Tasks;
-using LibraryManager.Client;
-using TechTalk.SpecFlow;
-using Utilities;
-
-namespace LibraryManager.Test.Hooks
+﻿namespace LibraryManager.Test.Hooks
 {
+    using LibraryManager.Client;
+    using System.Diagnostics;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using TechTalk.SpecFlow;
+    using Utilities;
+
     [Binding]
     public class BaseHook
     {

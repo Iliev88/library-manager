@@ -1,14 +1,11 @@
-﻿using LibraryManager.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-
-namespace LibraryManager.Client
+﻿namespace LibraryManager.Client
 {
+    using LibraryManager.Model;
+    using System;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+
+    using System.Web;
     public class BookClient : BaseClient
     {
         public Task<HttpResponseMessage> GetAllBooks(string title)

@@ -1,10 +1,8 @@
-﻿using LibraryManager.Test.Hooks;
-using NUnit.Framework;
-using System.Net;
-using TechTalk.SpecFlow;
-
-namespace LibraryManager.Test.Definitions
+﻿namespace LibraryManager.Test.Definitions
 {
+    using LibraryManager.Test.Hooks;
+    using TechTalk.SpecFlow;
+
     [Binding]
     public sealed class DeleteBookStepDefinition
     {
