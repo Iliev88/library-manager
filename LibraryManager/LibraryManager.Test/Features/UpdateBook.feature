@@ -24,4 +24,12 @@ Examples:
 	| 9  | Miguel | Don Quixote | Alonso Quixano, a retired country... | 9      |            | edit      | edit            | Book.Author is a required field |
 	| 9  | Miguel | Don Quixote | Alonso Quixano, a retired country... | 9      | edit       |           | edit            | Book.Title is a required field  |
 
+Scenario Outline: Fail to update not existing book
+	Given the book is updated <IdEdit>, <AuthorEdit>, <TitleEdit>, <DescriptionEdit>
+	Then not found status code should be returned
+	And error message <Error>
+Examples:
+	| IdEdit | AuthorEdit | TitleEdit | DescriptionEdit | Error      |
+	| 9      | edit       | edit      | edit            | not found! |
+
 

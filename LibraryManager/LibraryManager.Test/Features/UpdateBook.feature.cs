@@ -116,6 +116,25 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Fail to update not existing book")]
+        [NUnit.Framework.TestCaseAttribute("9", "edit", "edit", "edit", "not found!", null)]
+        public virtual void FailToUpdateNotExistingBook(string idEdit, string authorEdit, string titleEdit, string descriptionEdit, string error, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Fail to update not existing book", null, exampleTags);
+#line 27
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 28
+ testRunner.Given(string.Format("the book is updated {0}, {1}, {2}, {3}", idEdit, authorEdit, titleEdit, descriptionEdit), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 29
+ testRunner.Then("not found status code should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 30
+ testRunner.And(string.Format("error message {0}", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

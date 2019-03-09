@@ -32,6 +32,12 @@
             BaseHook.result = BaseHook.bookClient.AddBook(bookModel);
         }
 
+        [When(@"the books are requested (.*)")]
+        public void WhenTheBooksAreRequested(string title)
+        {
+            BaseHook.result = BaseHook.bookClient.GetAllBooks(title);
+        }
+
         [When(@"the books are requested")]
         public void WhenTheBooksAreRequested()
         {
@@ -47,6 +53,7 @@
             {
                 foreach (var book in responseModel)
                 {
+                    System.Console.WriteLine(responseModel.Length);
                     Assert.That(book.Id, Is.Not.Null, "'Id' is missing");
                     Assert.That(book.Author, Is.Not.Null, "'Author' is missing");
                     Assert.That(book.Title, Is.Not.Null, "'Title' is missing");

@@ -16,7 +16,7 @@
             bookModel = book;
         }
 
-        [When(@"the book is updated (.*), (.*), (.*), (.*)")]
+        [StepDefinition(@"the book is updated (.*), (.*), (.*), (.*)")]
         public void WhenTheBookIsUpdated(int id, string author, string title, string description)
         {
             bookModel = BookObjectFactory.GetBook();

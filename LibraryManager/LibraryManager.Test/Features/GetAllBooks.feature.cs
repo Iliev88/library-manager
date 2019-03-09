@@ -71,12 +71,12 @@ namespace LibraryManager.Test.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Get all books")]
+        [NUnit.Framework.DescriptionAttribute("Get all books by title")]
         [NUnit.Framework.TestCaseAttribute("5", "Lisa Halliday", "Asymmetry", "Just for test", null)]
         [NUnit.Framework.TestCaseAttribute("6", "Rebecca Makkai", "The Great Believers", "Another test", null)]
-        public virtual void GetAllBooks(string id, string author, string title, string description, string[] exampleTags)
+        public virtual void GetAllBooksByTitle(string id, string author, string title, string description, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get all books", null, exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get all books by title", null, exampleTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -85,10 +85,34 @@ this.ScenarioInitialize(scenarioInfo);
 #line 8
  testRunner.And("the new model is sent to the server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
- testRunner.When("the books are requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("the books are requested {0}", title), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 10
  testRunner.Then("successful status code should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 11
+ testRunner.And("all books should be retrieved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Get all books")]
+        [NUnit.Framework.TestCaseAttribute("11", "Lisa Halliday", "Asymmetry", "Just for test", null)]
+        [NUnit.Framework.TestCaseAttribute("12", "Rebecca Makkai", "The Great Believers", "Another test", null)]
+        public virtual void GetAllBooks(string id, string author, string title, string description, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get all books", null, exampleTags);
+#line 17
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 18
+ testRunner.Given(string.Format("a new book model is created {0}, {1}, {2} and {3}", id, author, title, description), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 19
+ testRunner.And("the new model is sent to the server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 20
+ testRunner.When("the books are requested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 21
+ testRunner.Then("successful status code should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 22
  testRunner.And("all books should be retrieved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
