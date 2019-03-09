@@ -17,7 +17,7 @@ namespace LibraryManager.Test.Definitions
 
         public GetAllBooksStepDefinition(BookModel book)
         {
-            this.bookModel = book;
+            bookModel = book;
         }
 
         [Given(@"a new book model is created (.*), (.*), (.*) and (.*)")]

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using LibraryManager.Client;
@@ -15,12 +16,16 @@ namespace LibraryManager.Test.Hooks
         public static BookClient bookClient;
         public static Task<HttpResponseMessage> result;
 
+        private static Process process;
+
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
             httpRequestHandler = new HttpRequestHandler();
             libraryManagerSettings = new LibraryManagerSettings();
             bookClient = new BookClient();
+
+            process = Process.Start(".\\exe\\LibraryManager.exe");
         }
 
         [BeforeScenario]
@@ -38,7 +43,7 @@ namespace LibraryManager.Test.Hooks
         [AfterTestRun]
         public static void AfterTestRun()
         {
-
+            process.Kill();
         }
     }
 }

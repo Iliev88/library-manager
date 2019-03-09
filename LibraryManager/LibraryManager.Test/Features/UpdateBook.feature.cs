@@ -72,8 +72,8 @@ namespace LibraryManager.Test.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Update a book")]
-        [NUnit.Framework.TestCaseAttribute("8", "Miguel", "Don Quixote", "Alonso Quixano, a retired country...", "edit", "edit", "edit", null)]
-        public virtual void UpdateABook(string id, string author, string title, string description, string authorEdit, string titleEdit, string descriptionEdit, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("8", "Miguel", "Don Quixote", "Alonso Quixano, a retired country...", "8", "edit", "edit", "edit", null)]
+        public virtual void UpdateABook(string id, string author, string title, string description, string idEdit, string authorEdit, string titleEdit, string descriptionEdit, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update a book", null, exampleTags);
 #line 6
@@ -84,7 +84,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 8
  testRunner.And("the model is sent to the server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
- testRunner.When(string.Format("the book is updated {0}, {1}, {2}, {3}", id, authorEdit, titleEdit, descriptionEdit), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("the book is updated {0}, {1}, {2}, {3}", idEdit, authorEdit, titleEdit, descriptionEdit), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 10
  testRunner.Then("successful status code should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 11

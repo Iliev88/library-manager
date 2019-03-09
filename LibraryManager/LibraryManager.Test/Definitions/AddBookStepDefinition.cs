@@ -15,7 +15,7 @@
 
         public AddBookStepDefinition(BookModel book)
         {
-            this.bookModel = book;
+            bookModel = book;
         }
 
         [Given(@"book model is created (.*), (.*), (.*) and (.*)")]
@@ -28,15 +28,13 @@
             bookModel.Description = description;
         }
 
-        [When(@"the model is sent to the server")]
-        [Given(@"the model is sent to the server")]
+        [StepDefinition(@"the model is sent to the server")]
         public void WhenTheModelIsSentToTheServer()
         {
             BaseHook.result = BaseHook.bookClient.AddBook(bookModel);
         }
 
-        [Then(@"the book should be added")]
-        [Given(@"the book should be added")]
+        [StepDefinition(@"the book should be added")]
         public void ThenTheBookShouldBeAdded()
         {
             var responseModel = BaseHook.httpRequestHandler.HandleHttpRequest<BookModel>(BaseHook.result);

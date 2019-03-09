@@ -12,8 +12,7 @@ namespace LibraryManager.Test.Definitions
     [Binding]
     public sealed class GetBookStepDefinition
     {
-        [When(@"book is requested (.*)")]
-        [Given(@"book is requested (.*)")]
+        [StepDefinition(@"book is requested (.*)")]
         public void GivenBookIsRequested(int id)
         {
             BaseHook.result = BaseHook.bookClient.GetBook(id);

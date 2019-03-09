@@ -17,7 +17,7 @@ namespace LibraryManager.Test.Definitions
 
         public UpdateBookStepDefinition(BookModel book)
         {
-            this.bookModel = book;
+            bookModel = book;
         }
 
         [When(@"the book is updated (.*), (.*), (.*), (.*)")]
@@ -39,7 +39,6 @@ namespace LibraryManager.Test.Definitions
 
             Assert.Multiple(() =>
             {
-                Console.WriteLine(responseModel.Author);
                 Assert.That(responseModel.Id, Is.EqualTo(bookModel.Id), "'Id' is missing or is not equal to");
                 Assert.That(responseModel.Author, Is.EqualTo(bookModel.Author), "'Author' is missing or is not equal to");
                 Assert.That(responseModel.Title, Is.EqualTo(bookModel.Title), "'Title' is missing or is not equal to");

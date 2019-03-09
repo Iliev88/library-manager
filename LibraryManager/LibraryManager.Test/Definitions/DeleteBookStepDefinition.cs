@@ -8,8 +8,7 @@ namespace LibraryManager.Test.Definitions
     [Binding]
     public sealed class DeleteBookStepDefinition
     {
-        [When(@"book is deleted (.*)")]
-        [Given(@"book is deleted (.*)")]
+        [StepDefinition(@"book is deleted (.*)")]
         public void WhenBookIsDeleted(int id)
         {
             BaseHook.result = BaseHook.bookClient.DeleteBook(id);
