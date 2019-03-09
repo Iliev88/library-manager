@@ -13,12 +13,5 @@ namespace LibraryManager.Test.Definitions
         {
             BaseHook.result = BaseHook.bookClient.DeleteBook(id);
         }
-
-        [Then(@"successful status code for deletion should be returned")]
-        public void ThenSuccessfulStatusCodeForDeletionShouldBeReturned()
-        {
-            Assert.AreEqual(HttpStatusCode.NoContent, BaseHook.result.Result.StatusCode);
-        }
-
     }
 }

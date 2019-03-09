@@ -14,7 +14,7 @@ Examples:
 
 Scenario Outline: Fail to delete a book
 	Given book is deleted <Id>
-	Then book should not be retrieved <Error>
+	Then error message <Error>
 Examples:
 	| Id  | Error |
 	| 999 | not found! |

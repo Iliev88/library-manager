@@ -105,7 +105,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 16
  testRunner.Given(string.Format("book is deleted {0}", id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 17
- testRunner.Then(string.Format("book should not be retrieved {0}", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("error message {0}", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

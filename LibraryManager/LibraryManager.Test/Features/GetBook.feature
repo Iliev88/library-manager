@@ -8,7 +8,7 @@ Scenario Outline: Get a book
 	And the model is sent to the server
 	When book is requested <Id>
 	Then successful status code should be returned
-	And the book should be added
+	And the book should be available
 Examples:
 	| Id | Author    | Title   | Description |
 	| 4  | Dan Brown | Inferno | Dante...    |

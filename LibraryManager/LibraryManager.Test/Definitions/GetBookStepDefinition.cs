@@ -17,22 +17,5 @@ namespace LibraryManager.Test.Definitions
         {
             BaseHook.result = BaseHook.bookClient.GetBook(id);
         }
-
-        [Then(@"book should not be retrieved (.*)")]
-        public void ThenBookShouldNotBeRetrieved(string error)
-        {
-            var errorMessage = BaseHook.httpRequestHandler.GetHttpRequestMsgAsString(BaseHook.result);
-
-            Assert.That(errorMessage, Does.Contain(error));
-            Console.WriteLine(errorMessage);
-        }
-
-        [Then(@"not found status code should be returned")]
-        public void ThenNotFoundStatusCodeShouldBeReturned()
-        {
-            Assert.AreEqual(HttpStatusCode.NotFound, BaseHook.result.Result.StatusCode);
-        }
-
-
     }
 }

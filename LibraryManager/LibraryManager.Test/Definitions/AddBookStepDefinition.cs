@@ -34,8 +34,8 @@
             BaseHook.result = BaseHook.bookClient.AddBook(bookModel);
         }
 
-        [StepDefinition(@"the book should be added")]
-        public void ThenTheBookShouldBeAdded()
+        [StepDefinition(@"the book should be available")]
+        public void ThenTheBookShouldBeAvailable()
         {
             var responseModel = BaseHook.httpRequestHandler.HandleHttpRequest<BookModel>(BaseHook.result);
 
@@ -47,28 +47,5 @@
                 Assert.That(responseModel.Description, Is.EqualTo(bookModel.Description), "'Description' is missing or is not equal to");
             });
         }
-
-        [Then(@"the book should not be added (.*)")]
-        public void ThenTheBookShouldNotBeAdded(string error)
-        {
-            var errorMessage = BaseHook.httpRequestHandler.GetHttpRequestMsgAsString(BaseHook.result);
-
-            Assert.That(errorMessage, Does.Contain(error));
-            Console.WriteLine(errorMessage);
-        }
-
-        [Then(@"successful status code should be returned")]
-        public void ThenSuccessfulStatusCodeShouldBeReturned()
-        {
-            Assert.AreEqual(HttpStatusCode.OK, BaseHook.result.Result.StatusCode);
-        }
-
-        [Then(@"unsuccessful status code should be returned")]
-        public void ThenUnsuccessfulStatusCodeShouldBeReturned()
-        {
-            Assert.AreEqual(HttpStatusCode.BadRequest, BaseHook.result.Result.StatusCode);
-        }
-
-
     }
 }

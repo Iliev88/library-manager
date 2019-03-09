@@ -92,6 +92,30 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Fail to update a book")]
+        [NUnit.Framework.TestCaseAttribute("9", "Miguel", "Don Quixote", "Alonso Quixano, a retired country...", "9", "", "edit", "edit", "Book.Author is a required field", null)]
+        [NUnit.Framework.TestCaseAttribute("9", "Miguel", "Don Quixote", "Alonso Quixano, a retired country...", "9", "edit", "", "edit", "Book.Title is a required field", null)]
+        public virtual void FailToUpdateABook(string id, string author, string title, string description, string idEdit, string authorEdit, string titleEdit, string descriptionEdit, string error, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Fail to update a book", null, exampleTags);
+#line 16
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 17
+ testRunner.Given(string.Format("book model is created {0}, {1}, {2} and {3}", id, author, title, description), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 18
+ testRunner.And("the model is sent to the server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 19
+ testRunner.When(string.Format("the book is updated {0}, {1}, {2}, {3}", idEdit, authorEdit, titleEdit, descriptionEdit), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 20
+ testRunner.Then("unsuccessful status code should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 21
+ testRunner.And(string.Format("error message {0}", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

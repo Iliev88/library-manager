@@ -67,6 +67,8 @@
     <Compile Include="Definitions\DeleteBookStepDefinition.cs" />
     <Compile Include="Definitions\GetAllBooksStepDefinition.cs" />
     <Compile Include="Definitions\GetBookStepDefinition.cs" />
+    <Compile Include="Definitions\Then\ErrorMessageStepDefinition.cs" />
+    <Compile Include="Definitions\Then\StatusCodeStepDefinition.cs" />
     <Compile Include="Definitions\UpdateBookStepDefinition.cs" />
     <Compile Include="Features\AddBook.feature.cs">
       <AutoGen>True</AutoGen>

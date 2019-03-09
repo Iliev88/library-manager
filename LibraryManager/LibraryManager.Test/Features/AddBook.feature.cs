@@ -87,7 +87,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 9
  testRunner.Then("successful status code should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 10
- testRunner.And("the book should be added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the book should be available", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -98,6 +98,7 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestCaseAttribute("5", "Random Author 5", "", "Random Description 5", "Book.Title is a required field", null)]
         [NUnit.Framework.TestCaseAttribute("-1", "Invalid Author", "Invalid Title", "Invalid Description", "Book.Id should be a positive integer!", null)]
         [NUnit.Framework.TestCaseAttribute("0", "Invalid Author", "Invalid Title", "Invalid Description", "Book.Id should be a positive integer!", null)]
+        [NUnit.Framework.TestCaseAttribute("10", "AuthorLongerThanThirtyCharacters", "Title", "Description", "Book.Author should not exceed 30 characters", null)]
         public virtual void FailToAddABook(string id, string author, string title, string description, string error, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Fail to add a book", null, exampleTags);
@@ -109,9 +110,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 19
    testRunner.When("the model is sent to the server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 20
-   testRunner.Then(string.Format("the book should not be added {0}", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+   testRunner.Then("unsuccessful status code should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 21
-   testRunner.And("unsuccessful status code should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("error message {0}", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
