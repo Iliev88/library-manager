@@ -16,7 +16,7 @@ Examples:
 Scenario Outline: Get an invalid book
 	Given book is requested <Id>
 	Then not found status code should be returned
-	And book should not be retrieved <Error>
+	And error message <Error>
 Examples: 
 	| Id  | Error      |
 	| 999 | not found! |

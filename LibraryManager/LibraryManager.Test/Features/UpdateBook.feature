@@ -30,6 +30,6 @@ Scenario Outline: Fail to update not existing book
 	And error message <Error>
 Examples:
 	| IdEdit | AuthorEdit | TitleEdit | DescriptionEdit | Error      |
-	| 9      | edit       | edit      | edit            | not found! |
+	| 9999   | edit       | edit      | edit            | not found! |
 
 

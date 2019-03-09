@@ -119,7 +119,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Fail to update not existing book")]
-        [NUnit.Framework.TestCaseAttribute("9", "edit", "edit", "edit", "not found!", null)]
+        [NUnit.Framework.TestCaseAttribute("9999", "edit", "edit", "edit", "not found!", null)]
         public virtual void FailToUpdateNotExistingBook(string idEdit, string authorEdit, string titleEdit, string descriptionEdit, string error, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Fail to update not existing book", null, exampleTags);

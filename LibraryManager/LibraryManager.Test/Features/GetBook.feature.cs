@@ -109,7 +109,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 18
  testRunner.Then("not found status code should be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 19
- testRunner.And(string.Format("book should not be retrieved {0}", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("error message {0}", error), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
